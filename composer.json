@@ -1,0 +1,78 @@
+{
+    "name": "misaf/vendra-jalali",
+    "replace": {
+        "mokhosh/filament-jalali": "*"
+    },
+    "description": "Add Jalali datetime to your filament tables",
+    "keywords": [
+        "misaf",
+        "laravel",
+        "vendra-jalali"
+    ],
+    "homepage": "https://github.com/misaf/vendra-jalali",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ehsan Mahmoodi",
+            "email": "misaf.1990@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^4.0|^5.0",
+        "illuminate/contracts": "^11.28|^12.0",
+        "morilog/jalali": "^v3.4.2",
+        "spatie/laravel-package-tools": "^1.14.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.9|^8.0",
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.7",
+        "pestphp/pest-plugin-arch": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mokhosh\\FilamentJalali\\": "src/",
+            "Mokhosh\\FilamentJalali\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mokhosh\\FilamentJalali\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
+        },
+        "laravel": {
+            "providers": [
+                "Mokhosh\\FilamentJalali\\FilamentJalaliServiceProvider"
+            ],
+            "aliases": {
+                "FilamentJalali": "Mokhosh\\FilamentJalali\\Facades\\FilamentJalali"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
